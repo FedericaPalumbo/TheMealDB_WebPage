@@ -1,0 +1,379 @@
+/* ============================================
+   DETTAGLIO RICETTA — STILI
+   Estende style.css per la pagina dettaglio.html
+   ============================================ */
+
+
+/* --------------------------------------------------
+   HEADER — bottone back (sovrascrive search bar)
+   -------------------------------------------------- */
+.btn-back {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: all var(--transition);
+}
+
+.btn-back:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* --------------------------------------------------
+   HERO
+   -------------------------------------------------- */
+.dettaglio-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  max-height: 560px;
+}
+
+/* Immagine hero */
+.hero-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: fadeIn 0.6s ease both;
+}
+
+.hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 60%,
+    var(--bg-primary) 100%
+  );
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Info hero */
+.hero-info {
+  background: var(--bg-primary);
+  padding: 3rem 3.5rem 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  justify-content: center;
+  animation: slideInRight 0.5s ease both;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Badges categoria + paese */
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  background: rgba(232, 168, 56, 0.12);
+  border: 1px solid rgba(232, 168, 56, 0.3);
+  color: var(--accent-light);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Titolo */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+/* Meta: bandiera, paese, ingredienti */
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.hero-meta .meta-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* Tag */
+.hero-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.hero-tag {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* Azioni DB */
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-salva {
+  background: var(--accent);
+  color: #0f0e0e;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.btn-salva:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+
+.btn-salva:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-elimina {
+  background: transparent;
+  border: 1px solid #c0392b;
+  color: #e74c3c;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.btn-elimina:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.btn-fonte {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-fonte:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* --------------------------------------------------
+   CORPO: ingredienti + preparazione
+   -------------------------------------------------- */
+.dettaglio-corpo {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  align-items: start;
+}
+
+/* Titoli sezione */
+.sezione-titolo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* --------------------------------------------------
+   INGREDIENTI (colonna sinistra)
+   -------------------------------------------------- */
+.dettaglio-ingredienti {
+  position: sticky;
+  top: 90px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.5rem;
+  margin-right: 2.5rem;
+  animation: fadeInUp 0.5s ease 0.1s both;
+}
+
+.ingredienti-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ingrediente-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ingrediente-item:last-child {
+  border-bottom: none;
+}
+
+.ingrediente-nome {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.ingrediente-quantita {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.82rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+
+/* --------------------------------------------------
+   PREPARAZIONE + VIDEO (colonna destra)
+   -------------------------------------------------- */
+.dettaglio-contenuto {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  animation: fadeInUp 0.5s ease 0.2s both;
+}
+
+/* Istruzioni */
+.istruzioni-testo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.istruzione-paragrafo {
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+  transition: border-color var(--transition);
+}
+
+.istruzione-paragrafo:hover {
+  border-left-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* Video */
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* --------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------- */
+@media (max-width: 1024px) {
+  .dettaglio-hero {
+    grid-template-columns: 1fr;
+    max-height: unset;
+  }
+
+  .hero-img-wrapper {
+    height: 320px;
+  }
+
+  .hero-img-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 60%,
+      var(--bg-primary) 100%
+    );
+  }
+
+  .hero-info {
+    padding: 2rem 1.5rem;
+  }
+
+  .dettaglio-corpo {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .dettaglio-ingredienti {
+    position: static;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn-salva,
+  .btn-elimina,
+  .btn-fonte {
+    width: 100%;
+    justify-content: center;
+  }
+}

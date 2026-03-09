@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MealExplorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🍽</span>
+        <span class="logo-text">MealExplorer</span>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca una ricetta..." />
+        <button id="searchBtn">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTRI CATEGORIA -->
+  <section class="filtri-section">
+    <div class="filtri-inner">
+      <span class="filtri-label">Categoria:</span>
+      <div class="filtri-scroll-wrapper">
+        <button class="scroll-arrow" id="catLeft" aria-label="Scorri sinistra">&#8249;</button>
+        <div class="filtri-scroll" id="categorieContainer">
+          <button class="filtro-btn active" data-category="all">Tutte</button>
+        </div>
+        <button class="scroll-arrow" id="catRight" aria-label="Scorri destra">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTRI BANDIERE -->
+  <section class="bandiere-section">
+    <div class="filtri-inner">
+      <span class="filtri-label">Paese:</span>
+      <div class="filtri-scroll-wrapper">
+        <button class="scroll-arrow" id="bandLeft" aria-label="Scorri sinistra">&#8249;</button>
+        <div class="filtri-scroll" id="bandiereContainer">
+          <button class="bandiera-btn active" data-area="all" title="Tutti i paesi">🌍<span class="band-label"> Tutti</span></button>
+        </div>
+        <button class="scroll-arrow" id="bandRight" aria-label="Scorri destra">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- STATO LOADING -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>Caricamento ricette...</p>
+    </div>
+
+    <!-- STATO ERRORE -->
+    <div class="error-state hidden" id="errorState">
+      <span class="error-icon">⚠️</span>
+      <p id="errorMessage">Si è verificato un errore.</p>
+      <button id="retryBtn">Riprova</button>
+    </div>
+
+    <!-- GRIGLIA RICETTE -->
+    <div class="ricette-grid" id="ricetteGrid"></div>
+
+    <!-- NESSUN RISULTATO -->
+    <div class="empty-state hidden" id="emptyState">
+      <span class="empty-icon">🍴</span>
+      <p>Nessuna ricetta trovata.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Dati forniti da <a href="https://www.themealdb.com" target="_blank">TheMealDB</a> · MealExplorer 2025</p>
+  </footer>
+
+  <script src="classi/Ricetta.js"></script>
+  <script src="classi/FiltroRicerca.js"></script>
+  <script src="utils/helpers.js"></script>
+  <script src="services/apiService.js"></script>
+  <script src="services/dbService.js"></script>
+  <script src="controllers/controllerRicette.js"></script>
+  <script src="controllers/controllerUI.js"></script>
+
+</body>
+</html>
